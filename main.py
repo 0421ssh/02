@@ -8,10 +8,11 @@ import os
  
  
 def get_color():
-    # 获取随机颜色
-    get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
-    color_list = get_colors(100)
-    return random.choice(color_list)
+    import randomdef get_random_color():
+     r = random.randint(0, 255)
+     g = random.randint(0, 255)
+     b = random.randint(0, 255)
+     return (r, g, b)
  
  
 def get_access_token():
@@ -104,6 +105,12 @@ def get_birthday(birthday, year, today):
  
 def get_ciba():
     url = "http://open.iciba.com/dsapi/"
+    headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+    r = get(url, headers=headers)
     note_en = r.json()["content"]
     note_ch = r.json()["note"]
     return note_ch, note_en
