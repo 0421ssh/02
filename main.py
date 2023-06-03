@@ -8,11 +8,15 @@ import os
  
  
 def get_color():
-    import randomdef get_color():
-     r = random.randint(0, 255)
-     g = random.randint(0, 255)
-     b = random.randint(0, 255)
-     return (r, g, b)
+    # 获取随机颜色
+    get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
+    color_list = get_colors(100)
+    return random.choice(color_list)
+   
+   
+def get_color1(): 
+    color = "#ADD8E6"
+    return color
  
  
 def get_access_token():
@@ -148,7 +152,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
             },
             "region": {
                 "value": region_name,
-                "color": get_color()
+                "color": get_color1()
             },
             "weather": {
                 "value": weather,
